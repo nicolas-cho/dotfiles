@@ -34,7 +34,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # * Change the defalt shell
-if [[ "$EUID" == 0 ]];
-  then chsh -s $(which zsh) $(whoami) && zsh
-  else sudo chsh -s $(which zsh) $(whoami) && zsh
+if [[ "$EUID" == 0 ]]; then 
+chsh -s $(which zsh) $(whoami) && zsh
 fi
