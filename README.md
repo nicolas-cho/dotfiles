@@ -19,7 +19,7 @@ fi
 ```
 DOTFILES_DIR=$HOME/dotfiles
 GITHUB_USER=nicolas_cho
-git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR
+git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 ```
 4) add bare repository to that repository
 ```
