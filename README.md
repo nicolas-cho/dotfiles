@@ -21,16 +21,17 @@ DOTFILES_DIR=$HOME/dotfiles
 GITHUB_USER=nicolas_cho
 git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR
 ```
-3) add bare repository to that repository
+4) add bare repository to that repository
 ```
 git init --bare $HOME/dotfiles
 ```
-4) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
+5) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
 ```
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 echo "alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
+6) [install dependencies](#install-dependencies)
 #tests:
 1) check if 'config' alias configured correctly
 ```
@@ -59,7 +60,9 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 sudo chsh -s $(which zsh) $(whoami)
 ```
 4) run zsh command to enter the shell
-```zsh```
+```
+zsh
+```
 
 test:
 ```
