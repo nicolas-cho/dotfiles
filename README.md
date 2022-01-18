@@ -16,9 +16,10 @@ if [ -d "$DOTFILES_DIR" ]; then
 fi
 ```
 3) clone dotfiles repository
-```DOTFILES_DIR=$HOME/dotfiles
-   GITHUB_USER=nicolas_cho
-   git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR
+```
+DOTFILES_DIR=$HOME/dotfiles
+GITHUB_USER=nicolas_cho
+git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR
 ```
 3) add bare repository to that repository
 ```
