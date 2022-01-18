@@ -3,9 +3,13 @@
 set -e
 
 # * Update apt and install git and zsh.
-# * commands must be run as root.
-sudo apt update
-sudo apt install -y git zsh wget
+# * check if user is root.
+
+if [ "$EUID" -ne 0 ]
+  then apt update && apt install -y git zsh wget
+  else sudo apt update && sudo apt install -y git zsh wget
+fi
+
 
 DOTFILES_DIR=$HOME/dotfiles
 if [ -d "$DOTFILES_DIR" ]; then
@@ -15,7 +19,7 @@ fi
 
 GITHUB_USERNAME=nicolas-cho
 # * Download dotfiles repo via HTTPS
-git clone --bare https://github.com/$GITHUB_USERNAME/dotfiles.git $DOTFILES_DIR
+git clone --bare https://github.com/"$GITHUB_USERNAME"/dotfiles.git $DOTFILES_DIR
 
 # * For SSH use the following command
 #git clone --bare git@github.com:devnicolasc/dotfiles.git $DOTFILES_DIR
@@ -38,6 +42,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # * Change the defalt shell
-sudo chsh -s $(which zsh) $(whoami)
+if [ "$EUID" -ne 0 ]
+  then chsh -s $(which zsh) $(whoami)
+  else sudo chsh -s $(which zsh) $(whoami)
+fi
 
 echo '\e[93mDone! run zsh command to enter the shell'
