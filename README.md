@@ -12,7 +12,7 @@ Dotfiles are a collection of configuration files that are used to setup easily u
 INSTALL
 ```
 GITHUB_USER=nicolas-cho
-if (( $EUID == 0 ));
+if (( $EUID == 0 ))
   then apt update && apt install -y curl git zsh wget tmux && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh; 
   else sudo apt update && sudo apt install -y curl git zsh wget tmux && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh;
 fi 
@@ -21,7 +21,7 @@ fi
 ## manually use dotfiles:
 1) install cli dependencies as root user or with sudo:
 ```
-if [ "$EUID" -ne 0 ]
+if (( $EUID == 0 ))
   then apt update && apt install -y git zsh wget tmux
   else sudo apt update && sudo apt install -y git zsh wget tmux
 fi
@@ -36,12 +36,12 @@ fi
 4) clone dotfiles repository
 ```
 DOTFILES_DIR=$HOME/dotfiles
-GITHUB_USER=nicolas_cho
+GITHUB_USER=nicolas-cho
 git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 ```
-5) add bare repository to that repository
+5) Download dotfiles repo via HTTPS
 ```
-git init --bare $HOME/dotfiles
+git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 ```
 6) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
 ```
