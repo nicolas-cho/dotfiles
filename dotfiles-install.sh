@@ -35,5 +35,5 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # * Change the defalt shell
 if [[ "$EUID" == 0 ]]; then 
-chsh -s $(which zsh) $(whoami) && zsh
+chsh -s $(which zsh) $(whoami) 
 fi
