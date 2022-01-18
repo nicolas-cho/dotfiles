@@ -7,31 +7,53 @@ Dotfiles are a collection of configuration files that are used to setup easily u
 2) add dot files (.zshrc, .p10k.zsh)
 3) commit and push
 
-## use dotfiles:
-1) remove dotfiles folder if exist
+## dotfiles installed with shell script
+
+INSTALL
+```
+GITHUB_USER=nicolas_cho
+if [ "$EUID" -ne 0 ]
+  then apt update && apt upgrade && apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh
+  else sudo apt update && sudo apt upgrade && sudp apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh
+fi
+```
+```
+curl -sSL https://raw.githubusercontent.com/ohad24/dotfiles/main/dotfiles-install.sh | sh
+```
+
+## manually use dotfiles:
+1) install cli dependencies as root user or with sudo:
+```
+if [ "$EUID" -ne 0 ]
+  then apt update && apt install -y git zsh wget
+  else sudo apt update && sudo apt install -y git zsh wget
+fi
+```
+3) remove dotfiles folder if exist
 ```
 if [ -d "$DOTFILES_DIR" ]; then
     printf '%s\n' "Removing Lock ($DOTFILES_DIR)"
     rm -rf "$DOTFILES_DIR"
 fi
 ```
-3) clone dotfiles repository
+4) clone dotfiles repository
 ```
 DOTFILES_DIR=$HOME/dotfiles
 GITHUB_USER=nicolas_cho
 git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 ```
-4) add bare repository to that repository
+5) add bare repository to that repository
 ```
 git init --bare $HOME/dotfiles
 ```
-5) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
+6) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
 ```
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
 echo "alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
-6) [install dependencies](#install-dependencies)
+7) [install dependencies](#install-dependencies)
+
 #tests:
 1) check if 'config' alias configured correctly
 ```
