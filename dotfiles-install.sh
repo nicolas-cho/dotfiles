@@ -34,9 +34,9 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
 
 # * Change the defalt shell
-if [ "$EUID" -ne 0 ]
-  then chsh -s $(which zsh) $(whoami)
-  else sudo chsh -s $(which zsh) $(whoami)
+if (( $EUID == 0 ));
+  then chsh -s $(which zsh) $(whoami);
+  else sudo chsh -s $(which zsh) $(whoami);
 fi
 
 echo '\e[93mDone! run zsh command to enter the shell'
