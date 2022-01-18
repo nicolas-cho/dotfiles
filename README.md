@@ -8,9 +8,17 @@ Dotfiles are a collection of configuration files that are used to setup easily u
 3) commit and push
 
 ## use dotfiles:
-1) remove dofiles folder if exist
-2) clone dotfiles repository
-```git clone --bare https://github.com/{GITHUB_USER}/dotfiles.git $DOTFILES_DIR```
+1) remove dotfiles folder if exist
+```
+if [ -d "$DOTFILES_DIR" ]; then
+    printf '%s\n' "Removing Lock ($DOTFILES_DIR)"
+    rm -rf "$DOTFILES_DIR"
+fi
+```
+3) clone dotfiles repository
+```DOTFILES_DIR=$HOME/dotfiles
+   GITHUB_USER=nicolas_cho
+   git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR```
 3) add bare repository to that repository
 ```git init --bare $HOME/dotfiles```
 4) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
