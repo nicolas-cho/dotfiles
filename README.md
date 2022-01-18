@@ -11,11 +11,11 @@ Dotfiles are a collection of configuration files that are used to setup easily u
 
 INSTALL
 ```
-GITHUB_USER=nicolas_cho
-if [ "$EUID" -ne 0 ]
-  then apt update && apt upgrade && apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh
-  else sudo apt update && sudo apt upgrade && sudp apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh
-fi
+GITHUB_USER=nicolas-cho
+if (( $EUID == 0 ));
+  then apt update && apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh  exit; 
+  else sudo apt update && sudo apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh;
+fi 
 ```
 
 ## manually use dotfiles:
