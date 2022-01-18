@@ -5,11 +5,6 @@ set -e
 # * Update apt and install git and zsh.
 # * check if user is root.
 
-if [ "$EUID" -ne 0 ]
-  then apt update && apt install -y git zsh wget
-  else sudo apt update && sudo apt install -y git zsh wget
-fi
-
 
 DOTFILES_DIR=$HOME/dotfiles
 if [ -d "$DOTFILES_DIR" ]; then
@@ -17,9 +12,9 @@ if [ -d "$DOTFILES_DIR" ]; then
     rm -rf "$DOTFILES_DIR"
 fi
 
-GITHUB_USERNAME=nicolas-cho
+GITHUB_USER=nicolas-cho
 # * Download dotfiles repo via HTTPS
-git clone --bare https://github.com/"$GITHUB_USERNAME"/dotfiles.git $DOTFILES_DIR
+git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 
 # * For SSH use the following command
 #git clone --bare git@github.com:devnicolasc/dotfiles.git $DOTFILES_DIR
