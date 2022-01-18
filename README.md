@@ -17,9 +17,6 @@ if [ "$EUID" -ne 0 ]
   else sudo apt update && sudo apt upgrade && sudp apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh
 fi
 ```
-```
-curl -sSL https://raw.githubusercontent.com/ohad24/dotfiles/main/dotfiles-install.sh | sh
-```
 
 ## manually use dotfiles:
 1) install cli dependencies as root user or with sudo:
