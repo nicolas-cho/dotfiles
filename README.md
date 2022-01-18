@@ -18,9 +18,12 @@ fi
 3) clone dotfiles repository
 ```DOTFILES_DIR=$HOME/dotfiles
    GITHUB_USER=nicolas_cho
-   git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR```
+   git clone --bare https://github.com/$GITHUB_USER/dotfiles.git $DOTFILES_DIR
+```
 3) add bare repository to that repository
-```git init --bare $HOME/dotfiles```
+```
+git init --bare $HOME/dotfiles
+```
 4) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
 ```
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
