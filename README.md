@@ -13,8 +13,8 @@ INSTALL
 ```
 GITHUB_USER=nicolas-cho
 if (( $EUID == 0 ));
-  then apt update && apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh  exit; 
-  else sudo apt update && sudo apt install -y curl git zsh wget && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh;
+  then apt update && apt install -y curl git zsh wget tmux && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh; 
+  else sudo apt update && sudo apt install -y curl git zsh wget tmux && curl -sSL https://raw.githubusercontent.com/"$GITHUB_USER"/dotfiles/main/dotfiles-install.sh | sh;
 fi 
 ```
 
@@ -22,8 +22,8 @@ fi
 1) install cli dependencies as root user or with sudo:
 ```
 if [ "$EUID" -ne 0 ]
-  then apt update && apt install -y git zsh wget
-  else sudo apt update && sudo apt install -y git zsh wget
+  then apt update && apt install -y git zsh wget tmux
+  else sudo apt update && sudo apt install -y git zsh wget tmux
 fi
 ```
 3) remove dotfiles folder if exist
