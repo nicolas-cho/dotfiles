@@ -1,31 +1,56 @@
 # Dotfiles
 
-Dotfiles are a collection of configuration files that are used to setup easily user preferred setup.
-
-git bare repository does 
-
+Dotfiles are a collection of configuration files that are used to setup easily user preferred configurations.
 
 ## create Dotfiles from scratch:
-1) create repository on GITHUB
-2) clone repository
+1) create repository on github
+2) add dot files (.zshrc, .p10k.zsh)
+3) commit and push
+
+## use dotfiles:
+1) remove dofiles folder if exist
+2) clone dotfiles repository
+```git clone --bare https://github.com/{GITHUB_USER}/dotfiles.git $DOTFILES_DIR```
 3) add bare repository to that repository
 ```git init --bare $HOME/dotfiles```
-4) add configurations (config is the new "git" command for this repository)
+4) add configurations (config is an alias directly to the configurations folder ('dotfiles' in this case)
 ```
 alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 config config --local status.showUntrackedFiles no
-echo "alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'" >> $HOME/.zshrc
+echo "alias config='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'" >> $HOME/.zshrc
 ```
-
-test:
+#tests:
+1) check if 'config' alias configured correctly
 ```
 > config status
 nothing to commit, working directory clean
 ```
-optionally add to a repository in github:
+2) check if "alias config.." is in your .zsh file 
 ```
-config config --global user.name "FIRST_NAME LAST_NAME"
-config config --global user.email "MY_NAME@example.com"
+cat ~/.zshrc
 ```
+# install dependencies 
+1) Download and install OH-MY-ZSH with --unattended and --keep-zshrc flags.
+```
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O ohmyzsh-setup.sh
+unset ZSH
+sh ohmyzsh-setup.sh --unattended --keep-zshrc
+```
+2) Download powerlevel10k theme and plugins
+```
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+3) Change the default shell to zsh
+```
+sudo chsh -s $(which zsh) $(whoami)
+```
+4) run zsh command to enter the shell
+```zsh```
 
+test:
+```
+zsh --version
+```
 
