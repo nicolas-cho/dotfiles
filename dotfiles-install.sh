@@ -12,7 +12,7 @@ fi
 git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 
 # * For SSH use the following command
-#git clone --bare git@github.com:devnicolasc/dotfiles.git $DOTFILES_DIR
+#git clone --bare git@github.com:"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 
 # * Checkout the dotfiles repo
 /usr/bin/git --git-dir=$DOTFILES_DIR --work-tree=$HOME config --local status.showUntrackedFiles no
