@@ -12,7 +12,6 @@ if [ -d "$DOTFILES_DIR" ]; then
     rm -rf "$DOTFILES_DIR"
 fi
 
-GITHUB_USER=nicolas-cho
 # * Download dotfiles repo via HTTPS
 git clone --bare https://github.com/"$GITHUB_USER"/dotfiles.git $DOTFILES_DIR
 
