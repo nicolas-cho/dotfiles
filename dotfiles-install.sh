@@ -3,6 +3,8 @@
 set -e
 
 DOTFILES_DIR=$HOME/dotfiles
+GITHUB_USER=nicolas-cho
+
 if [ -d "$DOTFILES_DIR" ]; then
     printf '%s\n' "Removing Lock ($DOTFILES_DIR)"
     rm -rf "$DOTFILES_DIR"
