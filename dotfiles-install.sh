@@ -2,10 +2,6 @@
 
 set -e
 
-# * Update apt and install git and zsh.
-# * check if user is root.
-
-
 DOTFILES_DIR=$HOME/dotfiles
 if [ -d "$DOTFILES_DIR" ]; then
     printf '%s\n' "Removing Lock ($DOTFILES_DIR)"
